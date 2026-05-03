@@ -46,7 +46,7 @@ HealthLab is built to support structured digital research operations rather than
 | Backend | Node.js, Express.js, MongoDB, Mongoose, JSON Web Token, Express Validator, Multer, PDFKit, Winston |
 | Frontend | React 19, Vite, React Router DOM, Axios, Tailwind CSS, DaisyUI, Framer Motion, Recharts |
 | Testing | Jest, Supertest, mongodb-memory-server, Artillery |
-| AI / External Services | Google Gemini, Groq, Hugging Face, FDA proxy integration, PayHere |
+| AI / External Services | Google Gemini, Groq, Hugging Face, FDA proxy integration, Stripe |
 | Deployment | Render for backend, Vercel for frontend |
 
 ---
@@ -166,7 +166,7 @@ HealthLab/
 
 - Supports payment creation, order status lookup, webhook handling, and development confirmation flow
 - Connected to contribution and funding workflows
-- Uses PayHere integration settings from environment variables
+- Uses Stripe Checkout integration settings from environment variables
 
 ### Community and Moderation
 
@@ -509,7 +509,7 @@ Example join request:
 | --- | --- | --- | --- | --- |
 | `POST` | `/api/payments/create` | Bearer token | JSON payment creation payload | Payment initialization response |
 | `GET` | `/api/payments/status/:orderId` | Bearer token | No body | Payment status |
-| `POST` | `/api/payments/webhook` | Public webhook | PayHere callback payload | Webhook acknowledgment |
+| `POST` | `/api/payments/webhook` | Public webhook | Stripe event payload | Webhook acknowledgment |
 | `POST` | `/api/payments/dev-confirm/:orderId` | Bearer token | No body | Dev confirmation of payment |
 
 Example create payment request:
@@ -738,12 +738,10 @@ Create `backend/.env` and configure the values used by the system.
 | `HF_ENDPOINT` | Optional custom Hugging Face endpoint |
 | `HF_TIMEOUT_MS` | Timeout for AI tagging requests |
 | `HF_TAG_SCORE_THRESHOLD` | Smart-tag confidence threshold |
-| `PAYHERE_MERCHANT_ID` | PayHere merchant ID |
-| `PAYHERE_MERCHANT_SECRET` | PayHere merchant secret |
-| `PAYHERE_SANDBOX` | Sandbox toggle |
-| `PAYHERE_RETURN_URL` | Frontend success callback |
-| `PAYHERE_CANCEL_URL` | Frontend cancel callback |
-| `PAYHERE_NOTIFY_URL` | Backend webhook callback |
+| `STRIPE_SECRET_KEY` | Stripe secret API key |
+| `STRIPE_PUBLISHABLE_KEY` | Stripe publishable API key |
+| `STRIPE_WEBHOOK_SECRET` | Stripe webhook signing secret |
+| `FRONTEND_URL` | Frontend URL for Stripe success/cancel redirects |
 
 ### Default Local URLs
 
@@ -759,7 +757,7 @@ Create `backend/.env` and configure the values used by the system.
 | Google Gemini | Experiment summary generation and clinical-style narrative support | `backend/src/services/gemini.service.js`, experiment and eligibility flows |
 | Groq | Community chatbot replies | `backend/src/modules/community/chatbot/services/groqService.js` |
 | Hugging Face | AI-assisted tagging and smart metadata support | `backend/src/modules/community/services/aiTaggingService.js` and related env settings |
-| PayHere | Payment processing and contribution or funding workflows | `backend/src/services/payhereService.js`, payment routes and controller |
+| Stripe | Payment processing and contribution or funding workflows | `backend/src/services/stripeService.js`, payment routes and controller |
 | FDA Open APIs | External health-related data proxy | `backend/src/routes/externalRoutes.js`, `backend/src/controllers/externalApiController.js` |
 | MongoDB Atlas or MongoDB | Persistent application database | `backend/src/config/db.js` |
 

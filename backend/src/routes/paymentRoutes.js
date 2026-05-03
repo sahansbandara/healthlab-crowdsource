@@ -12,7 +12,7 @@ router.get('/status/:orderId', protect, getPaymentStatus);
 router.get('/verify-stripe/:sessionId', protect, require('../controllers/paymentController').verifyStripePayment);
 router.post('/webhook', paymentWebhook);
 
-// DEV ONLY: Manually confirm a payment (simulates PayHere webhook for localhost testing)
+// DEV ONLY: Manually confirm a payment (simulates Stripe webhook for localhost testing)
 router.post('/dev-confirm/:orderId', protect, async (req, res) => {
     try {
         const contribution = await Contribution.findOne({ paymentReferenceId: req.params.orderId });

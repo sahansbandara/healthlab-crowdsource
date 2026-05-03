@@ -13,7 +13,7 @@ export const getOpenFundRequests = () => api.get('/fund-requests/open');
 // ── Contributions ───────────────────────────────────────────────────
 export const getMyContributions = () => api.get('/contributions/my');
 
-// ── Payments (PayHere) ──────────────────────────────────────────────
+// ── Payments (Stripe) ───────────────────────────────────────────────
 export const createPayment = (data) => api.post('/payments/create', data);
 export const getPaymentStatus = (orderId) => api.get(`/payments/status/${orderId}`);
 export const verifyStripePayment = (sessionId) => api.get(`/payments/verify-stripe/${sessionId}`);

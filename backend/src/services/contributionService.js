@@ -8,7 +8,7 @@ const contribute = async (user, fundRequestId, { amount, notes }) => {
     // 1. Validation
     if (amount <= 0) throw new Error('Contribution amount must be positive');
 
-    // PayHere Force: Always start as PENDING
+    // Stripe Force: Always start as PENDING until webhook confirms
     const paymentStatus = 'PENDING';
 
     const request = await FundRequest.findById(fundRequestId);
@@ -166,7 +166,7 @@ const updateContributionStatus = async (contributionId, user, { paymentStatus, p
     }
 
     if (paymentStatus === 'SUCCESS') {
-        throw new Error('Manual SUCCESS status is blocked. Payments must be confirmed via PayHere webhook.');
+        throw new Error('Manual SUCCESS status is blocked. Payments must be confirmed via Stripe webhook.');
     } else {
         await contribution.save();
     }
