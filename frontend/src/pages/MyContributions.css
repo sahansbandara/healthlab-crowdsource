@@ -1,0 +1,209 @@
+/* ── My Contributions Page ──────────────────────────────────────────── */
+
+.contributions-hero {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+}
+
+.contributions-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.contributions-hero-inner {
+    position: relative;
+    z-index: 1;
+    padding: 2.5rem 3rem;
+    color: #fff;
+}
+
+.contributions-hero-inner h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.contributions-hero-inner .subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+}
+
+/* Table */
+.contributions-table-wrap {
+    overflow-x: auto;
+}
+
+.contributions-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.contributions-table thead th {
+    background: #f9fafb;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.contributions-table tbody td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.contributions-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+/* Payment Status Badges */
+.payment-badge {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.payment-badge.status-PENDING {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.payment-badge.status-SUCCESS {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.payment-badge.status-FAILED {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.payment-badge.status-VOIDED {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+/* Error / loading / empty */
+.contributions-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.contributions-loading,
+.contributions-empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.contributions-amount {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Summary cards */
+.contributions-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.summary-card-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.summary-card-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+}
+
+.summary-card.success .summary-card-value {
+    color: #059669;
+}
+
+.summary-card.pending .summary-card-value {
+    color: #d97706;
+}
+
+/* Dev Notif Box */
+.dev-notif-box {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    color: #92400e;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.dev-notif-box strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.dev-notif-box code {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+}
+
+/* Verify Button */
+.btn-verify {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    background: #2563eb;
+    color: white !important;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.btn-verify:hover {
+    background: #1e40af;
+    transform: scale(1.05);
+}

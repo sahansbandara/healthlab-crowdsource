@@ -1,0 +1,9 @@
+export { default as SiteNavbar } from './SiteNavbar';
+export { default as Hero } from './Hero';
+export { default as ObjectivesSection } from './ObjectivesSection';
+export { default as LabCategories } from './LabCategories';
+export { default as InstitutesSection } from './InstitutesSection';
+export { default as AnnouncementsVideo } from './AnnouncementsVideo';
+export { default as TestimonialsSection } from './TestimonialsSection';
+export { default as StatisticsSection } from './StatisticsSection';
+export { default as VirtualLabsFooter } from './VirtualLabsFooter';

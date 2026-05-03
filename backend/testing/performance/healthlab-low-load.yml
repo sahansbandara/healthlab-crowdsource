@@ -1,0 +1,31 @@
+config:
+  target: "{{ $processEnvironment.BASE_URL || 'http://localhost:5000' }}"
+  phases:
+    - duration: 30
+      arrivalRate: 5
+      name: low_load_read_only
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  # Safe public discovery flow: read-only endpoints only.
+  - name: public_experiment_discovery
+    flow:
+      - get:
+          url: /health
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/experiments
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/experiments/{{ $processEnvironment.SAFE_EXPERIMENT_ID }}
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/experiments/{{ $processEnvironment.SAFE_EXPERIMENT_ID }}/safety-guidelines
+          expect:
+            - statusCode: 200
+

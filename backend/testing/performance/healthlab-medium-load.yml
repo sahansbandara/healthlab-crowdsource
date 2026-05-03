@@ -1,0 +1,37 @@
+config:
+  target: "{{ $processEnvironment.BASE_URL || 'http://localhost:5000' }}"
+  phases:
+    - duration: 45
+      arrivalRate: 15
+      name: medium_load_participant_flow
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  # Safe participant read flow: no writes, uses a dedicated test token and IDs only.
+  - name: participant_matching_and_studies
+    flow:
+      - get:
+          url: /api/experiments
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/recommendations
+          headers:
+            Authorization: "Bearer {{ $processEnvironment.PARTICIPANT_TOKEN }}"
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/participations/my-studies
+          headers:
+            Authorization: "Bearer {{ $processEnvironment.PARTICIPANT_TOKEN }}"
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/participations/{{ $processEnvironment.SAFE_PARTICIPATION_ID }}
+          headers:
+            Authorization: "Bearer {{ $processEnvironment.PARTICIPANT_TOKEN }}"
+          expect:
+            - statusCode: 200
+

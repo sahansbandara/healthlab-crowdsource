@@ -1,0 +1,36 @@
+config:
+  target: "{{ $processEnvironment.BASE_URL || 'http://localhost:5000' }}"
+  phases:
+    - duration: 45
+      arrivalRate: 10
+      rampTo: 20
+      name: researcher_read_oversight
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  # Researcher-side safe oversight flow.
+  # Note: the current API does not expose a dedicated "fetch experiments by researcher" route,
+  # so this scenario uses the closest available researcher-safe read endpoints.
+  - name: researcher_experiment_oversight
+    flow:
+      - get:
+          url: /api/experiments
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/experiments/{{ $processEnvironment.SAFE_EXPERIMENT_ID }}/reviews
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/experiments/{{ $processEnvironment.SAFE_EXPERIMENT_ID }}/safety-guidelines
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/participations/experiment/{{ $processEnvironment.SAFE_EXPERIMENT_ID }}/participants
+          headers:
+            Authorization: "Bearer {{ $processEnvironment.RESEARCHER_TOKEN }}"
+          expect:
+            - statusCode: 200
+

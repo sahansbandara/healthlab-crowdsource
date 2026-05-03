@@ -1,0 +1,33 @@
+config:
+  target: "{{ $processEnvironment.BASE_URL || 'http://localhost:5000' }}"
+  phases:
+    - duration: 60
+      arrivalRate: 35
+      name: high_load_read_heavy
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  # Mixed high-load read scenario: experiments -> recommendations -> experiment detail.
+  - name: mixed_read_heavy_flow
+    flow:
+      - get:
+          url: /health
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/experiments
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/recommendations
+          headers:
+            Authorization: "Bearer {{ $processEnvironment.PARTICIPANT_TOKEN }}"
+          expect:
+            - statusCode: 200
+      - get:
+          url: /api/experiments/{{ $processEnvironment.SAFE_EXPERIMENT_ID }}
+          expect:
+            - statusCode: 200
+

@@ -1,0 +1,384 @@
+.admin-dashboard {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.admin-dashboard h1 {
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.admin-dashboard .subtitle {
+    color: #718096;
+    margin-bottom: 2rem;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    padding: 0.6rem 1.25rem;
+    border: 2px solid #e2e8f0;
+    background: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    background: #f7fafc;
+    border-color: #cbd5e0;
+}
+
+.tab-btn.active {
+    background: #4299e1;
+    border-color: #4299e1;
+    color: white;
+}
+
+.admin-filters {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.admin-filters label {
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.admin-filters select {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    min-width: 160px;
+}
+
+.admin-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn-export {
+    background: #4a5568;
+    color: white;
+}
+
+.btn-export:hover {
+    background: #2d3748;
+}
+
+.btn-danger {
+    background: #c53030;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #9b2c2c;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+.section-note {
+    color: #718096;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.table-container.table-scroll {
+    overflow-x: auto;
+}
+
+.approval-table .cell-purpose {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.no-edit {
+    color: #a0aec0;
+    font-size: 0.85rem;
+}
+
+.badge.status-pending {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.badge.status-approved {
+    background: #c6f6d5;
+    color: #276749;
+}
+
+.badge.status-rejected {
+    background: #fed7d7;
+    color: #c53030;
+}
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.approval-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.approval-table th {
+    background: #f7fafc;
+    padding: 0.4rem 0.75rem;
+    font-weight: 600;
+    color: #4a5568;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #edf2f7;
+}
+
+.approval-table td {
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid #edf2f7;
+    color: #2d3748;
+    font-size: 0.9rem;
+}
+
+.approval-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.researcher-row-clickable {
+    cursor: pointer;
+}
+
+.badge {
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.badge.researcher {
+    background: #ebf8ff;
+    color: #2b6cb0;
+}
+
+.badge.role-admin {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.badge.role-researcher {
+    background: #ebf8ff;
+    color: #2b6cb0;
+}
+
+.badge.role-participant {
+    background: #e6fffa;
+    color: #0d9488;
+}
+
+.actions {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn.approve {
+    background: #48bb78;
+    color: white;
+}
+
+.btn.approve:hover {
+    background: #38a169;
+    transform: translateY(-1px);
+}
+
+.btn.reject {
+    background: #f56565;
+    color: white;
+}
+
+.btn.reject:hover {
+    background: #e53e3e;
+    transform: translateY(-1px);
+}
+
+.error-message {
+    background: #fff5f5;
+    color: #c53030;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #fed7d7;
+}
+
+.empty-msg {
+    text-align: center;
+    color: #a0aec0;
+    padding: 1.5rem !important;
+    font-size: 0.9rem;
+}
+
+.admin-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-size: 1.25rem;
+    color: #718096;
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    max-width: 480px;
+    width: 90%;
+}
+
+.researcher-detail-modal {
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.researcher-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.researcher-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.researcher-detail-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.researcher-detail-item .detail-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.researcher-detail-item .detail-value {
+    font-size: 0.95rem;
+    color: #2d3748;
+}
+
+.researcher-detail-item .detail-value.detail-purpose {
+    white-space: pre-wrap;
+    line-height: 1.4;
+}
+
+.modal-label {
+    display: block;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.modal-content h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2d3748;
+}
+
+.modal-content p {
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+.modal-content label {
+    display: block;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.25rem;
+}
+
+.modal-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-family: inherit;
+    margin-bottom: 1rem;
+    resize: vertical;
+}
+
+.modal-checkboxes {
+    margin-bottom: 1rem;
+}
+
+.modal-checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+}
+
+.modal-checkboxes input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

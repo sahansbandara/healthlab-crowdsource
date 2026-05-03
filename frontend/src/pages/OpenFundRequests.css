@@ -1,0 +1,320 @@
+/* ── Open Fund Requests (Donor Page) ───────────────────────────────── */
+
+.open-funds-hero {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #60a5fa 100%);
+}
+
+.open-funds-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.open-funds-hero-inner {
+    position: relative;
+    z-index: 1;
+    padding: 2.5rem 3rem;
+    color: #fff;
+}
+
+.open-funds-hero-inner h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.open-funds-hero-inner .subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+}
+
+.open-funds-hero-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.btn-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.btn-hero-link:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+/* Cards Grid */
+.open-funds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+}
+
+.open-fund-card {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.open-fund-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.open-fund-card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.open-fund-card-researcher {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.open-fund-card-reason {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.open-fund-card-progress {
+    margin-bottom: 1rem;
+}
+
+.open-fund-card-progress .fund-progress-bar {
+    height: 10px;
+    border-radius: 5px;
+    background: #e5e7eb;
+    overflow: hidden;
+}
+
+.open-fund-card-progress .fund-progress-bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #1e40af, #60a5fa);
+    transition: width 0.5s ease;
+}
+
+.open-fund-card-amounts {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-top: 0.35rem;
+}
+
+.open-fund-card-raised {
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.open-fund-card-target {
+    color: var(--text-secondary);
+}
+
+.open-fund-card-pct {
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+}
+
+.open-fund-contribute-btn {
+    width: 100%;
+    padding: 0.875rem;
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+    color: white;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.open-fund-contribute-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.open-fund-contribute-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Contribute Modal */
+.contribute-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1.5rem;
+}
+
+.contribute-modal {
+    background: var(--surface-color);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 480px;
+    animation: fundModalIn 0.25s ease-out;
+}
+
+.contribute-modal-header {
+    padding: 1.5rem 2rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contribute-modal-header h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.contribute-modal-header .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.contribute-modal-body {
+    padding: 1rem 2rem 2rem;
+}
+
+.contribute-modal-info {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+}
+
+.contribute-modal-info strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.contribute-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* Error */
+.open-funds-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.open-funds-loading,
+.open-funds-empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.open-funds-success {
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* AI Predictor */
+.open-fund-card-prediction {
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px dashed rgba(37, 99, 235, 0.3);
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% {
+        background: rgba(37, 99, 235, 0.08);
+    }
+
+    50% {
+        background: rgba(37, 99, 235, 0.12);
+    }
+
+    100% {
+        background: rgba(37, 99, 235, 0.08);
+    }
+}
+
+.prediction-icon {
+    font-size: 1.4rem;
+}
+
+.prediction-text {
+    font-size: 0.85rem;
+    color: #1e40af;
+    line-height: 1.4;
+}
+
+.prediction-text strong {
+    color: #2563eb;
+    font-weight: 800;
+}

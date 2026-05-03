@@ -1,0 +1,27 @@
+config:
+  target: "http://localhost:5000"
+  phases:
+    - duration: 30
+      arrivalRate: 5
+      name: warmup
+    - duration: 60
+      arrivalRate: 20
+      name: sustained_load
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: health-check-load
+    flow:
+      - get:
+          url: "/health"
+          expect:
+            - statusCode: 200
+
+  - name: community-list-load
+    flow:
+      - get:
+          url: "/api/posts"
+          expect:
+            - statusCode: 401
