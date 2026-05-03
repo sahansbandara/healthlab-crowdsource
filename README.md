@@ -1,5 +1,8 @@
 # HealthLab
 
+🚀 **Live Deployment Links:**
+- **Frontend (Vercel):** [https://healthlabcrowdsource-sithmi.vercel.app](https://healthlabcrowdsource-sithmi.vercel.app)
+- **Backend API (Render):** [https://healthlab-crowdsource.onrender.com](https://healthlab-crowdsource.onrender.com)
 
 HealthLab is a full-stack MERN system for digital health research management. It brings together researcher onboarding, experiment creation, participant eligibility and enrollment, daily activity logging, community collaboration, funding workflows, moderation, analytics, and AI-assisted research support in a single platform.
 
