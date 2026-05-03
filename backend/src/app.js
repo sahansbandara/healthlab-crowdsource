@@ -30,6 +30,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
   "https://health-lab-black.vercel.app",
+  "https://healthlabcrowdsource-sithmi.vercel.app"
 ];
 
 app.use(cors({
@@ -54,8 +55,8 @@ app.use((req, res, next) => {
 // Static uploads
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
-// 📊 Health check
-app.get("/health", (req, res) => {
+// 📊 Health check & Root endpoint
+const healthCheck = (req, res) => {
   const states = ["Disconnected", "Connected", "Connecting", "Disconnecting"];
   res.status(200).json({
     status: "ok",
@@ -65,7 +66,10 @@ app.get("/health", (req, res) => {
     uptime: process.uptime(),
     timestamp: new Date().toISOString()
   });
-});
+};
+
+app.get("/", healthCheck);
+app.get("/health", healthCheck);
 
 // 🛡️ Database Readiness Guard - Applied to all API routes
 app.use("/api", dbReadyMiddleware);
